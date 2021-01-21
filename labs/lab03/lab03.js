@@ -25,13 +25,11 @@ class lab03 {
       return zip_write_stream.pipe(write_stream);
   }
 
-  decompressFileStream(input, output) {
-    var zip_read_stream = fs.createReadStream(input);
-    var unzip_stream = zlib.createGzip();
-    var unzip_pipe_stream = zip_read_stream.pipe(unzip_stream);
-    var target_write_stream = fs.createWriteStream(output);
-    return unzip_pipe_stream.pipe(target_write_stream);
-  }
+decompressFileStream(input, output){
+    return fs.createReadStream(input).pipe(zlib.createGunzip()).
+    pipe(fs.createWriteStream(output));
+}
+
 
 listDirectoryContents(directoryName, callback) {
   fs.readdir(directoryName, (err, items) =>{
