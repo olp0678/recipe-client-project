@@ -466,6 +466,7 @@ gulp.task('copy:assets', () => {
 gulp.task('copy:server', () => {
     return gulp.src([
         'package.json',
+        'yarn.lock',
         paths.server.json
     ], {cwdbase: true})
         .pipe(gulp.dest(paths.dist));

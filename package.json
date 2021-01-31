@@ -1,5 +1,5 @@
 {
-    "name": "web-progrmaming-2",
+    "name": "web-programming-2",
     "version": "0.0.0",
     "main": "server/index.js",
     "dependencies": {
@@ -51,6 +51,7 @@
         "passport-twitter": "^1.0.4",
         "rxjs-compat": "6",
         "serve-favicon": "^2.5.0",
+        "uuid": "^3.4.0",
         "uuidv4": "^6.0.1"
     },
     "devDependencies": {
