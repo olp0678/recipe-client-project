@@ -1,4 +1,4 @@
-import uuidv4 from 'uuid/v4';
+import uuidv4 from 'uuid/v4';  /// to gieve us our random ids
 
 let users = [];
 
@@ -13,24 +13,24 @@ export function listContents(req, res) {
 //if id matches then return user found or null otherwise.
 //and returns false otherwise.
 function userFind(id){
-    let foundUsersID = users.filter(function(user_id){
-        if (user_id.id === id){
+    let ifFoundUsers = users.filter(function(user){
+        if (user.id === id){
             return true;
         }
         return false;
     });
-    if (foundUsersID.length > 0){
-        return foundUsersID[0];
+    if (ifFoundUsers.length > 0){
+        return ifFoundUsers[0];
     } else {
         return null;
     }
 }
 
 export function findOne(req, res){
-    let currentUser = userFind(req.params.id);
-    if(currentUser){
+    let existingUser = userFind(req.params.id);
+    if(existingUser){
         res.status(200);
-        res.json(currentUser);
+        res.json(existingUser);
     } else {
         res.status(404);
         res.json(
@@ -71,4 +71,46 @@ export function createUser(req, res) {
     users.push(newUser); // add new user to array
     res.status(201); //return status code 201, meaning user created
     res.json(newUser); // return user created with generated ID.
+}
+
+export function updateUser(req, res){
+    let user = {
+        id: req.param.id,
+        name: req.body.name,
+        address: req.body.address,
+        age: req.body.age
+    };
+
+    let existingUser = userFind(req.params.id);
+
+    //if user is not found
+    if(!existingUser){
+        //existingUser.id = user.id;
+        users.push(user); //add user to USERS array
+        res.status(201); // status for POST created
+        res.json(user); //return newly created object
+    } else {
+        //if user is found, update object
+        existingUser.name = user.name;
+        existingUser.address = user.address;
+        existingUser.age = user.age;
+        res.status(200); //status OK
+        res.json(existingUser); //return update object
+    } //close else
+}//close updateUser
+
+export function removeUser(req, res){
+    //use map function on array of users to return index if it exist, or -1 otherwise
+    let id = req.params.id;
+    let userArrayIndex = users.map(function(user){
+        return user.id;
+    }).indexOf(id);
+
+    if(userArrayIndex !== -1){ // if found remove it
+        users.splice(userArrayIndex, 1); // remove only element at index (UserArrayIndex)
+        res.status(204).send();// no content status 204 would be send.
+    } else { //if not found, return 404 and 'NOT FOUND'
+        res.status(404);
+        res.json({message: 'NOT FOUND'});
+    }
 }
