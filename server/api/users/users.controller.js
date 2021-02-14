@@ -103,48 +103,56 @@ export function create(req, res) {
    res.json(user);
 }
 //
-//export function upsert(req, res) {
-//    // Create a user object to insert or update
-//    // Use URL param for ID, Body for name/address/age
-//    let user = {
-//        id: req.params.id,
-//        name: req.body.name,
-//        address: req.body.address,
-//        age: req.body.age
-//    };
+export function upsert(req, res) {
+   // Create a user object to insert or update
+   // Use URL param for ID, Body for name/address/age
+   let user = {
+       id: req.params.id,
+       name: req.body.name,
+       address: req.body.address,
+       age: req.body.age
+   };
+
+   // Does this user already exist?
+   //let existingUser = findUser(req.params.id);
+
+   if(!findOneAndUpdate(user)) {
+       // If user does not exist, add new user and return CREATED
+      // users.push(user);
+       res.status(201);
+       res.json(user);
+   } else {
+       // Otherwise, update existing user object
+       //existingUser.name = user.name;
+       //existingUser.address = user.address;
+       //existingUser.age = user.age;
+       res.json(user);
+   }
+}
 //
-//    // Does this user already exist?
-//    let existingUser = findUser(req.params.id);
-//
-//    if(!existingUser) {
-//        // If user does not exist, add new user and return CREATED
-//        users.push(user);
-//        res.status(201);
-//        res.json(user);
-//    } else {
-//        // Otherwise, update existing user object
-//        existingUser.name = user.name;
-//        existingUser.address = user.address;
-//        existingUser.age = user.age;
-//        res.json(existingUser);
-//    }
-//}
-//
-//export function destroy(req, res) {
-//    // Find user in array
-//    let userIndex = users.map(function(user) {
-//        return user.id;
-//    })
-//        .indexOf(req.params.id);
-//
-//    if(userIndex !== -1) {
-//        // If user exists in array, remove and return NO CONTENT
-//        users.splice(userIndex, 1);
-//        res.status(204)
-//            .send();
-//    } else {
-//        // If user does not exist, return NOT FOUND
-//        res.status(404);
-//        res.json({message: 'Not Found'});
-//    }
-//}
+export function destroy(req, res) {
+   // Find user in array
+   if (remove(user)){
+       res.status(204)
+           .send();
+   }
+   else {
+       res.status(404);
+       res.json({message: 'Not Found'});
+   }
+   // let userIndex = users.map(function(user) {
+   //     return user.id;
+   // })
+   //     .indexOf(req.params.id);
+   //
+   // if(userIndex !== -1) {
+   //     // If user exists in array, remove and return NO CONTENT
+   //     users.splice(userIndex, 1);
+   //     res.status(204)
+   //         .send();
+   // } else {
+   //     // If user does not exist, return NOT FOUND
+   //     res.status(404);
+   //     res.json({message: 'Not Found'});
+   // }
+}

@@ -1,0 +1,7 @@
+mongodb documentation:
+https://docs.mongodb.com/
+
+how to construct regular expressions in Mongo:
+https://docs.mongodb.com/manual/reference/operator/query/regex/
+https://www.tutorialspoint.com/mongodb/mongodb_regular_expression.htm
+
