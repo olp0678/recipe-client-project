@@ -37,7 +37,7 @@ var all = {
 
     // MongoDB connection options
     mongo: {
-        enabled: false,
+        enabled: true,
         options: {
             db: {
                 safe: true
