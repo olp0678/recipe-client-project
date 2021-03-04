@@ -1,1 +1,2 @@
-export * from '../../server/config/environment/shared';
+import shared from '../../server/config/environment/shared';
+export default shared;

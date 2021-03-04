@@ -17,7 +17,6 @@ export const ROUTES: Routes = [
     { path: 'home', component: MainComponent },
 ];
 
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -40,4 +39,5 @@ export const ROUTES: Routes = [
       UserService,
     ]
 })
+
 export class MainModule {}
