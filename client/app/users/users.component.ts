@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Users} from '../../components/interfaces/Users';
-import constants from '../app.constants';
+import {User} from '../../components/interfaces/User';
 import {UserService} from '../../components/services/user.service';
-import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'users',
@@ -10,15 +9,21 @@ import {HttpClient} from '@angular/common/http';
   styles: [require('./users.scss')],
 })
 export class UsersComponent implements OnInit {
-  users : Users;
-  static parameters = [];
-  constructor(private http: HttpClient, private userService: UserService) {
-      this.users = constants.users;
+
+  private user: User;
+  static parameters = [ActivatedRoute, UserService];
+
+  constructor(private route: ActivatedRoute, private userService: UserService) {
+    this.route = route;
+    this.userService = userService;
   }
 
-
-
-
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.userService.getUserById(params.id)
+        .then(user => {
+          this.user = user;
+        });
+    });
   }
 }

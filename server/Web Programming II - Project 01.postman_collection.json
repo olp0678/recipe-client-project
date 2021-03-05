@@ -1,0 +1,499 @@
+{
+	"info": {
+		"_postman_id": "30ce1121-f8c2-4ab5-b690-2ad7c2f793c7",
+		"name": "Web Programming II - Project 01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "List all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "List all users stored in the collection"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve user by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/users/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieve a user by Id. Substitue the :id in the URL for one you are looking for"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": {\n\t\t\"firstName\": \"Bob\",\n\t\t\"lastName\": \"Smith\"\n\t},\n\t\"username\": \"bob\",\n\t\"email\": \"nobody@cares.com\"\n}"
+						},
+						"url": {
+							"raw": "localhost:9000/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Create a new user object"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": {\n\t\t\"firstName\": \"Bob\",\n\t\t\"lastName\": \"Jones\"\n\t},\n\t\"username\": \"bob\",\n\t\"email\": \"somebody@cares.com\"\n}"
+						},
+						"url": {
+							"raw": "localhost:9000/api/users/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Update a user with a given id. Replace :id with the id of your user"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a user by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/users/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Remove a user by Id. Substitue the :id in the URL for one you are looking for"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "List all recipes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes"
+							]
+						},
+						"description": "List all recipes stored in the collection"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve recipe by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Retrieve a recipe by Id. Substitue the :id in the URL for one you are looking for"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new recipe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"lasagna\",\n\t\"description\": \"Awsome Lasanga!\",\n\t\"image\": \"http://www.simplyrecipes.com/wp-content/uploads/2004/12/lasagna-horiz-b-2000.jpg\",\n\t\"prepTime\": 60,\n\t\"cookTime\": 90,\n\t\"directions\": [\n\t\t\"Get some noodles\",\n\t\t\"Put some sauce on the noodles\",\n\t\t\"Add some meat\",\n\t\t\"Put some cheese on it\",\n\t\t\"Bake for a while\",\n\t\t\"???\",\n\t\t\"Profit!\"\n\t],\n\t\"ingredients\": [{\n\t\t\"name\": \"Noodles\",\n\t\t\"amount\": \"A Bunch\"\n\t}, {\n\t\t\"name\": \"Sauce\",\n\t\t\"amount\": \"15 cups\"\n\t}, {\n\t\t\"name\": \"Cheese\",\n\t\t\"amount\": \"5 bags\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes"
+							]
+						},
+						"description": "Create a new recipe object"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a recipe",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"lasagna\",\n\t\"description\": \"Awsome Lasanga!!!\",\n\t\"image\": \"http://www.simplyrecipes.com/wp-content/uploads/2004/12/lasagna-horiz-b-2000.jpg\",\n\t\"prepTime\": 60,\n\t\"cookTime\": 90,\n\t\"directions\": [\n\t\t\"Get some noodles!!!!\",\n\t\t\"Put some sauce on the noodles\",\n\t\t\"Add some meat\",\n\t\t\"Put some cheese on it\",\n\t\t\"Bake for a while\",\n\t\t\"???\",\n\t\t\"Profit!\"\n\t],\n\t\"ingredients\": [{\n\t\t\"name\": \"Noodles\",\n\t\t\"amount\": \"A Bunch!\"\n\t}, {\n\t\t\"name\": \"Sauce\",\n\t\t\"amount\": \"15 cups\"\n\t}, {\n\t\t\"name\": \"Cheese\",\n\t\t\"amount\": \"5 bags\"\n\t}]\n}"
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Update a recipe object"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a recipe by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Remove a recipe by Id. Substitue the :id in the URL for one you are looking for"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Create a new review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Awsome Lasanga!\",\n\t\"rating\": 5.0,\n\t\"user\": \"bob\"\n}"
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes/:recipeId/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes",
+								":recipeId",
+								"reviews"
+							],
+							"variable": [
+								{
+									"key": "recipeId",
+									"value": ""
+								}
+							]
+						},
+						"description": "Create a new review object"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Horrible Lasanga!\",\n\t\"rating\": 1.0,\n\t\"user\": \"bob\"\n}"
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes/:recipeId/reviews/:reviewId",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes",
+								":recipeId",
+								"reviews",
+								":reviewId"
+							],
+							"variable": [
+								{
+									"key": "recipeId",
+									"value": ""
+								},
+								{
+									"key": "reviewId",
+									"value": ""
+								}
+							]
+						},
+						"description": "Update a review object"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove a review",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/api/recipes/:recipeId/reviews/:reviewId",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"recipes",
+								":recipeId",
+								"reviews",
+								":reviewId"
+							],
+							"variable": [
+								{
+									"key": "recipeId",
+									"value": ""
+								},
+								{
+									"key": "reviewId",
+									"value": ""
+								}
+							]
+						},
+						"description": "Remove a review"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0fe1ab7b-da8f-42f4-8b22-f178781cb420",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "970030ed-b9ec-4ce0-be40-e44f909cf67c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -21,18 +21,10 @@ export function tokenGetter() {
     return localStorage.getItem('id_token');
 }
 
-const appRoutes: Routes = [
-  {
-    path: '',
+const appRoutes: Routes = [{ path: '',
     redirectTo: '/home',
     pathMatch: 'full'
-  },
-  {
-    path: '**',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  }
-];
+}];
 
 @NgModule({
     imports: [
