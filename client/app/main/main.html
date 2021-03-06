@@ -1,59 +1,78 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Lab 12: Angular Routing</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Lab 13: ngx-bootstrap Modal Dialogs</h1>
+            <h1>Contents of values array:</h1>
+            <ul>
+                <li *ngFor="let value of values">{{ value }}</li>
+            </ul>
 
-      <h1>Enter a value here: <input [(ngModel)]="input"></h1>
+            <h1>Enter a value here: <input [(ngModel)]="input"></h1>
+            <h2>You entered: {{ input }}</h2>
 
-      <h2>You entered: {{ input }}</h2>
+            <hr size="5">
+            <h1>{{ valueToSquare }} * {{ valueToSquare }} = {{ valueToSquare | square }}</h1>
+            <div>
+                <button (click)="incrementNumber()" class="btn btn-outline-secondary">Increment Number</button>
+            </div>
 
-      <h1>Contents of values array:</h1>
-      <ul>
-        <li *ngFor="let value of values">{{ value }}</li>
-      </ul>
-
-      <hr size="5">
-      <h1>{{ valueToSquare }} * {{ valueToSquare }} = {{ valueToSquare | square }}</h1>
-
-      <hr size="5">
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Id</th>
-          <th>Age</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Address Line 1</th>
-          <th>Address Line 2</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Zip</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let user of users">
-          <td>
-            <button [routerLink]="['/users', user._id]"
-                    type="button" class="btn btn-default">{{user._id}}
-            </button>
-          </td>
-          <td>{{user.age}}</td>
-          <td>{{user.name.firstName}}</td>
-          <td>{{user.name.middleName}}</td>
-          <td>{{user.name.lastName}}</td>
-          <td>{{user.address.addressLine1}}</td>
-          <td>{{user.address.addressLine2}}</td>
-          <td>{{user.address.city}}</td>
-          <td>{{user.address.state}}</td>
-          <td>{{user.address.zip}}</td>
-        </tr>
-        </tbody>
-      </table>
+            <hr size="5">
+            <button (click)="createUser()" type="button" class="btn btn-outline-secondary">Create new User</button>
+            <table class="table table-responsive table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Details</th>
+                    <th>Age</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Address Line 1</th>
+                    <th>Address Line 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Edit User</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of users">
+                    <td>
+                        <button [routerLink]="['/users', user._id]"
+                                type="button" class="btn btn-outline-secondary">More Details
+                        </button>
+                    </td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.name.firstName}}</td>
+                    <td>{{user.name.middleName}}</td>
+                    <td>{{user.name.lastName}}</td>
+                    <td>{{user.address.addressLine1}}</td>
+                    <td>{{user.address.addressLine2}}</td>
+                    <td>{{user.address.city}}</td>
+                    <td>{{user.address.state}}</td>
+                    <td>{{user.address.zip}}</td>
+                    <td>
+                        <button (click)="updateUser(user)"
+                                type="button" class="btn btn-outline-secondary">Edit User
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <div>
-      <button [routerLink]="['/about']">About the Author</button>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-lg-none" style="color:blue">Hide on screens wider than lg breakpoint</div>
+            <div class="d-none d-lg-block" style="color:red">Hide on screens smaller than lg breakpoint</div>
+        </div>
     </div>
-  </div>
+    <br><br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6" style="border: 1px solid;">DIV ONE</div>
+        <div class="col-xs-12 col-sm-6" style="border: 1px solid;">DIV TWO</div>
+    </div>
+    <br><br>
+    <div class="row">
+        <button [routerLink]="['/about']" class="btn btn-outline-secondary">About the Author</button>
+    </div>
 </div>

@@ -12,7 +12,7 @@ import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import errorHandler from 'errorhandler';
 import path from 'path';
-import lusca from 'lusca';
+import helmet from 'helmet';
 import config from './environment';
 import passport from 'passport';
 import session from 'express-session';
@@ -42,7 +42,7 @@ export default function(app) {
     app.engine('html', require('ejs').renderFile);
     app.set('view engine', 'html');
     app.use(compression());
-    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
     app.use(methodOverride());
     app.use(cookieParser());
@@ -50,16 +50,16 @@ export default function(app) {
 
     if(config.mongo.enabled) {
         var MongoStore = connectMongo(session);
-            // Persist sessions with MongoStore / sequelizeStore
-            // We need to enable sessions for passport-twitter because it's an
-            // oauth 1.0 strategy, and Lusca depends on sessions
-            app.use(session({
+        // Persist sessions with MongoStore / sequelizeStore
+        // We need to enable sessions for passport-twitter because it's an
+        // oauth 1.0 strategy, and Lusca depends on sessions
+        app.use(session({
             secret: config.secrets.session,
             saveUninitialized: true,
             resave: false,
             store: new MongoStore({
-              mongooseConnection: mongoose.connection,
-              db: 'web2-session'
+                mongooseConnection: mongoose.connection,
+                db: 'web2-session'
             })
         }));
     } else {
@@ -71,28 +71,39 @@ export default function(app) {
     }
 
     /**
-     * Lusca - express server security
-     * https://github.com/krakenjs/lusca
+     * Helmet - Express.js security
+     * https://www.npmjs.com/package/helmet
+     * https://expressjs.com/en/advanced/best-practice-security.html
+     * I am not including CSRF protection because JWT bearer authentication is an effective mitigation of CSRF:
+     * https://security.stackexchange.com/questions/170388/do-i-need-csrf-token-if-im-using-bearer-jwt
      */
     if(env !== 'test' && env !== 'development') {
-        // Don't allow API access outside of deployed domain in production
-        app.use(lusca({
-            csrf: {
-                cookie: {
-                    name: 'XSRF-TOKEN'
+        // Set Content Security Policies
+        const scriptSources = ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'www.google-analytics.com'];
+        const styleSources = ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'];
+        const fontSources = ["'self'", "'unsafe-inline'", 'fonts.gstatic.com'];
+        const connectSources = ["'self'", 'www.google-analytics.com'];
+        app.use(
+            helmet.contentSecurityPolicy({
+                directives: {
+                    defaultSrc: ["'self'"],
+                    scriptSrc: scriptSources,
+                    scriptSrcElem: scriptSources,
+                    styleSrc: styleSources,
+                    connectSrc: connectSources,
+                    fontSrc: fontSources
                 }
-            },
-            xframe: 'SAMEORIGIN',
-            hsts: {
-                maxAge: 31536000, //1 year, in seconds
-                includeSubDomains: true,
-                preload: true
-            },
-            xssProtection: true
+            })
+        );
+        // Use default values for remaining helmet security checks
+        app.use(helmet({
+            contentSecurityPolicy: false,
         }));
 
-        // Force https in production
+        // Trust X-Forwarded-* headers since we are running behind a proxy server in production
         app.enable('trust proxy');
+
+        // Force https in production
         app.use(function(req, res, next) {
             if(req.secure) {
                 // request was via https, so do no special handling

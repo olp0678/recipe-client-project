@@ -1,6 +1,5 @@
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
-@import '~bootstrap-social/bootstrap-social.scss';
+$icon-font-path: '~bootstrap-icons/icons';
+@import "~bootstrap/scss/bootstrap";
 $fa-font-path: '/assets/fonts/font-awesome/';
 @import '~font-awesome/scss/font-awesome';
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap);
