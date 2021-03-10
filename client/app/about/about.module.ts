@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
-
-import { AboutComponent } from './about.component';
+import { AboutComponent, AboutChildComponent } from './about.component';
 
 export const ROUTES: Routes = [
     { path: 'about', component: AboutComponent },
@@ -16,16 +15,15 @@ export const ROUTES: Routes = [
         BrowserModule,
         FormsModule,
         RouterModule.forChild(ROUTES),
-
-        //TooltipModule.forRoot(),
     ],
     declarations: [
         AboutComponent,
+        AboutChildComponent
     ],
 
     exports: [
         AboutComponent,
+        AboutChildComponent
     ],
 })
-
 export class AboutModule {}

@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div>
+        Id: {{user._id}} <br>
+        Age: <input [(ngModel)]="user.age"><br>
+        First Name: <input [(ngModel)]="user.name.firstName"><br>
+        Middle Name: <input [(ngModel)]="user.name.middleName"><br>
+        Last Name: <input [(ngModel)]="user.name.lastName"><br>
+        Address 1: <input [(ngModel)]="user.address.addressLine1"><br>
+        Address 2: <input [(ngModel)]="user.address.addressLine2"><br>
+        City: <input [(ngModel)]="user.address.city"><br>
+        State: <input [(ngModel)]="user.address.state"><br>
+        Zip: <input [(ngModel)]="user.address.zip"><br>
+    </div>
+</div>
+<div class="modal-footer">
+     <!--<button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button> -->
+    <button type="button" class="btn btn-default" (click)="updateUser()">Submit</button>
+</div>

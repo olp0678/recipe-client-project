@@ -16,6 +16,9 @@ import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { AboutModule } from './about/about.module';
 import { UsersModule } from './users/users.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DemoDatepickerBasicComponent } from '../components/datepicker/datepicker.component';
 
 export function tokenGetter() {
     return localStorage.getItem('id_token');
@@ -34,7 +37,9 @@ const appRoutes: Routes = [{ path: '',
         RouterModule.forRoot(appRoutes, { enableTracing: process.env.NODE_ENV === 'development' }),
         MainModule,
         AboutModule,
-        UsersModule
+        UsersModule,
+        BrowserAnimationsModule,
+        BsDatepickerModule.forRoot()
     ],
     declarations: [
         AppComponent,
