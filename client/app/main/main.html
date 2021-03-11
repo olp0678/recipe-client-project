@@ -1,80 +1,107 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Lab 14: ngx-bootstrap Components</h1>
-        <h1>Contents of values array:</h1>
-        <ul>
-            <li *ngFor="let value of values">{{ value }}</li>
-        </ul>
+    <div class="row">
+        <div class="col-12">
+            <h1 class="page-header">Lab 15: Bootstrap CSS</h1>
+            <h1>Contents of values array:</h1>
+            <ul>
+                <li *ngFor="let value of values">{{ value }}</li>
+            </ul>
 
-        <h1>Enter a value here: <input [(ngModel)]="input"></h1>
-        <h2>You entered: {{ input }}</h2>
+            <h1>Enter a value here: <input [(ngModel)]="input"></h1>
+            <h2>You entered: {{ input }}</h2>
 
-        <hr size="5">
-        <h1>{{ valueToSquare }} * {{ valueToSquare }} = {{ valueToSquare | square }}</h1>
-        <div>
-            <button (click)="incrementNumber()">Increment Number</button>
-        </div>
+            <hr size="5">
+            <h1>{{ valueToSquare }} * {{ valueToSquare }} = {{ valueToSquare | square }}</h1>
+            <div>
+                <button (click)="incrementNumber()" class="btn btn-outline-secondary">Increment Number</button>
+            </div>
 
-        <hr size="5">
-        <button (click)="createUser()" type="button" class="btn btn-default">Create new User</button>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Details</th>
-                <th>Age</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th>Address Line 1</th>
-                <th>Address Line 2</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
-                <th>Edit User</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let user of users">
-                <td>
-                    <button [routerLink]="['/users', user._id]"
-                            type="button" class="btn btn-default">More Details
-                    </button>
-                </td>
-                <td>{{user.age}}</td>
-                <td>{{user.name.firstName}}</td>
-                <td>{{user.name.middleName}}</td>
-                <td>{{user.name.lastName}}</td>
-                <td>{{user.address.addressLine1}}</td>
-                <td>{{user.address.addressLine2}}</td>
-                <td>{{user.address.city}}</td>
-                <td>{{user.address.state}}</td>
-                <td>{{user.address.zip}}</td>
-                <td>
-                    <button (click)="updateUser(user)"
-                            type="button" class="btn btn-default">Edit User
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div>
-            <button [routerLink]="['/about']">About the Author</button>
+            <hr size="5">
+            <button (click)="createUser()" type="button" class="btn btn-outline-secondary">Create new User</button>
         </div>
-        div class="row">
-        <div class="col-xs-12 col-12 col-md-4 form-group">
-            <input type="text"
-                placeholder="Datepicker"
-                class="form-control"
-                bsDatepicker>
-        </div>
-        <div class="col-xs-12 col-12 col-md-4 form-group">
-            <input type="text"
-                placeholder="Daterangepicker"
-                class="form-control"
-                bsDaterangepicker>
-        </div>
-    
     </div>
-  </div>
+</div>
+<br>
+<table class="table" table-striped table-bordered>
+    <thead>
+    <tr class="d-flex">
+        <th class= "col-3 col-sm-2 col-md-2 ">Id</th>
+        <th class= "col-3 col-sm-1 col-md-1">Age</th>
+        <th class= "col-3 col-sm-1 col-md-1">First Name</th>
+        <th class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">Middle Name</th>
+        <th class= "col-3 col-sm-1 col-md-1">Last Name</th>
+        <th class= "col-1 col-sm-1 col-md-1 d-none d-lg-block d-none d-sm-block d-sm-none d-md-block">Address Line 1</th>
+        <th class= "col-1 col-sm-1 col-md-1 d-none d-lg-block d-none d-sm-block d-sm-none d-md-block">Address Line 2</th>
+        <th class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">City</th>
+        <th class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">State</th>
+        <th class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">Zip</th>
+        <th class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">Edit User</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users" class="d-flex">
+        <td class= "col-3 col-sm-2 col-md-2">
+            <button [routerLink]="['/users', user._id]"
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    style="word-break: break-all">{{user._id}}
+            </button>
+        </td>
+        <td class= "col-3 col-sm-1 col-md-1">{{user.age}}</td>
+        <td class= "col-3 col-sm-1 col-md-1">{{user.name.firstName}}</td>
+        <td class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">{{user.name.middleName}}</td>
+        <td class= "col-3 col-sm-1 col-md-1">{{user.name.lastName}}</td>
+        <td class= "col-1 col-sm-1 col-md-1 d-none d-lg-block d-none d-sm-block d-sm-none d-md-block">{{user.address.addressLine1}}</td>
+        <td class= "col-1 col-sm-1 col-md-1 d-none d-lg-block d-none d-sm-block d-sm-none d-md-block">{{user.address.addressLine2}}</td>
+        <td class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">{{user.address.city}}</td>
+        <td class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">{{user.address.state}}</td>
+        <td class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">{{user.address.zip}}</td>
+        <td class= "col-1 col-sm-1 col-md-1 d-none d-sm-block d-sm-none d-md-block">
+            <button (click)="updateUser(user)"
+                    type="button" class="btn btn-outline-secondary">Edit User
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-lg-none" style="color:blue">Hide on screens wider than lg breakpoint</div>
+            <div class="d-none d-lg-block" style="color:red">Hide on screens smaller than lg breakpoint</div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col-12 col-sm-6" style="border: 1px solid;">DIV ONE</div>
+        <div class="col-12 col-sm-6" style="border: 1px solid;">DIV TWO</div>
+    </div>
+    <br><br>
+    <div class="row">
+        <button [routerLink]="['/about']" class="btn btn-outline-secondary">About the Author</button>
+    </div>
+    <br> <br>
+</div>
+<div class="row d-flex">
+    <div class="col-12">
+        <button [routerLink]="['/users', users?users[0]._id:'']"
+                type="button" class="btn btn-outline-secondary"
+                style="word-break: break-all">{{users[0]._id}}
+        </button>
+    </div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].age}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].name.firstName}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].name.middleName}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].name.lastName}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].address.addressLine1}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].address.addressLine2}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].address.city}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].address.state}}</div>
+    <div class= "col-12 d-block d-sm-none d-none d-sm-block d-md-none">{{users[0].address.address.zip}}</div>
+    <div class="col-12 d-block d-sm-none d-none d-sm-block d-md-none">
+       <button (click)="updateUser(users?users[0]:{})"
+          type="button" class="btn btn-outline-secondary">Edit User
+       </button>
+    </div>
 </div>
